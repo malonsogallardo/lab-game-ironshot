@@ -5,7 +5,7 @@ class Background {
         this.heigth = heigth;
         
         this.image = new Image();
-        this.image.src = "";
+        this.image.src = "images/background.jpg";
 
         this.posX = 0;
         this.posY = 0;
