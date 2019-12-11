@@ -1,8 +1,8 @@
 class Background {
     constructor(ctx, width, heigth){
         this.ctx = ctx;
-        this.width = width;
-        this.heigth = heigth;
+        this.width = 100;
+        this.heigth = 200;
         
         this.image = new Image();
         this.image.src = "images/background.jpg";

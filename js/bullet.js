@@ -1,5 +1,5 @@
 class Bullet{
-    constructor(){
+    constructor(ctx){
         this.ctx = ctx;
     }
     draw(){

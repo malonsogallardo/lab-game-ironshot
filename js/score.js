@@ -1,5 +1,5 @@
 class Score{
-    constructor(){
+    constructor(ctx){
         this.ctx = ctx;
 
     }

@@ -1,5 +1,5 @@
 class Element{ 
-    constructor(){
+    constructor(ctx){
         this.ctx = ctx;
 
 
@@ -22,7 +22,7 @@ class Element{
     }
 
     draw(){
-
+        
     }
     move(){
         
