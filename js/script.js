@@ -5,7 +5,7 @@ window.onload = function () {
     };
 
     function startGame() {
-        game = new GameCanvas();
-        game.redenrizado();
+        game = new Game();
+        game.renderizado();
     }
 };

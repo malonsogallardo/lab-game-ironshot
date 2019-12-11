@@ -4,7 +4,7 @@ class Board{
         this.boardX = 20;
         this.boardY = 15;
     }
-    boardgame = [
+    boardGame = [
 
         0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,0,0,
@@ -24,7 +24,7 @@ class Board{
     
     ];
 
-    boardposition = [
+    boardPosition = [
 
         1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,
         1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,0,0,1,1,
@@ -43,4 +43,15 @@ class Board{
         1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     
     ];
+}
+
+function boardDraw(){
+    boardGame.forEach(function(position) {
+        if(position === 1){
+            console.log("es 1")
+        } else {
+            return null
+            console.log("es 0")
+        } 
+    });
 }
