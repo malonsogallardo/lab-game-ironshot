@@ -7,7 +7,7 @@ class Tower{
     }
 
     draw(){
-        this.ctx.drawImage(image)
+        this.ctx.drawImage(this.image,0,0)
     }
     move(){
         

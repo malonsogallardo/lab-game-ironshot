@@ -9,23 +9,24 @@ class Game{
        
     }
 
-    star(){
-        // Generar elementos
-        this.background = new Background(this.ctx, this.canvasHeight, this.canvasWidth)
-        this.board = new Board()
-        this.element = new Element()
-        this.tower = new Tower()
-        this.bullet = new Bullet()
-        this.score = new Score()
+    start(){
         
+        this.background = new Background(this.ctx, this.canvasHeight, this.canvasWidth)
+        this.board = new Board(this.ctx)
+        this.element = new Element(this.ctx)
+        this.tower = new Tower(this.ctx)
+        this.bullet = new Bullet(this.ctx)
+        this.score = new Score(this.ctx)
         this.draw()
+        
         // Llamar a la funcion de activar renderizado
     }
 
     draw(){
+        console.log("hola")
         this.background.draw()
-        this.element.draw()
-        this.tower.draw()
+        //this.element.draw()
+        //this.tower.draw()
     }
     move(){
 
