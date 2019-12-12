@@ -3,10 +3,8 @@ class Background {
         this.ctx = ctx;
         this.width = width;
         this.heigth = heigth;
-        
         this.image = new Image();
         this.image.src = "images/background.jpg";
-
         this.posX = 0;
         this.posY = 0;
     }

@@ -1,5 +1,5 @@
-class Bullet{
-    constructor(){
+/*class Bullet{
+    constructor(ctx){
         this.ctx = ctx;
     }
     draw(){
@@ -9,3 +9,4 @@ class Bullet{
         
     }
 }
+*/
