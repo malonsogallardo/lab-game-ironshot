@@ -49,7 +49,7 @@ boardGame = [
     ];
 
 const obj = {
-    1: "es 1" , //propiedades del cuadrado a pintar
+    1: fillRect(10,0, 20, 20), //propiedades del cuadrado a pintar
     0: 2 //no pintar nada
 }
 

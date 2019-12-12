@@ -1,4 +1,4 @@
-class Score{
+/*class Score{
     constructor(ctx){
         this.ctx = ctx;
 
@@ -8,3 +8,4 @@ class Score{
         
     }
 }
+*/
