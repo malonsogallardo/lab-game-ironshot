@@ -1,8 +1,8 @@
 class Element{ 
     constructor(ctx, width, heigth){
         this.ctx = ctx;
-        this.width = 30;
-        this.heigth = 30;
+        this.width = 40;
+        this.heigth = 40;
 
         this.image1 = new Image();
         this.image1.src = "images/css_logo.png";
@@ -24,8 +24,8 @@ class Element{
     draw(){
         this.ctx.drawImage(this.image1, this.posX, this.posY, this.width, this.heigth);
         this.ctx.drawImage(this.image2, 20, 20, this.width, this.heigth);
-        this.ctx.drawImage(this.image3, 50, 50, this.width, this.heigth);
-        this.ctx.drawImage(this.image4, 150, 150, this.width, this.heigth);
+        this.ctx.drawImage(this.image3, 100, 100, this.width, this.heigth);
+        this.ctx.drawImage(this.image4, 200, 200, this.width, this.heigth);
     }
 
 }
