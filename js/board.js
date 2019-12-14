@@ -49,10 +49,6 @@ class Board{
             1: ()=> this.ctx.fillRect(10,0, 20, 20), //propiedades del cuadrado a pintar
             0: () => {} //no pintar nada
         }
-        
-
-    
-    
     
     }
 
