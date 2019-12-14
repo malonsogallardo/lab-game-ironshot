@@ -5,8 +5,8 @@ class Tower{
         this.heigth = 50;
         this.image = new Image();
         this.image.src = "images/ironhack_logo.png";
-        this.posX = 50;
-        this.posY = 50;
+        this.posX = 420;
+        this.posY = 450;
     }
 
     draw(){
