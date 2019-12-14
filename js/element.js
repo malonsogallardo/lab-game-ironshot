@@ -3,7 +3,7 @@ class Element{
         this.ctx = ctx;
         this.width = 40;
         this.heigth = 40;
-        this.vx = 1;
+        this.vx = 5;
 
         this.image1 = new Image();
         this.image1.src = "images/css_logo.png";
@@ -47,10 +47,6 @@ class Element{
         }
 
         //if(this.posX <= +this.width) this.posX = 40;
-
-
-        //console.log(this.posX)
-        //console.log(this.width)
     }
 
 }

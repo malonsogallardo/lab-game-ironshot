@@ -5,31 +5,32 @@ class Game {
     this.width = 900;
     this.height = 600;
     this.fps = 60;
+    
     this.mousePos = {};
     //this.framesCounter = 0;
-    canvas.addEventListener("click", evt => {
-      this.mousePos = getMousePos(canvas, evt);
-      this.bullet = new Bullet(
-        this.ctx,
-        this.width,
-        this.height,
-        this.mousePos.x,
-        this.mousePos.y
-      );
-    });
-    function getMousePos(canvas, evt) {
-      return {
-        x: evt.screenX - 510,
-        y: evt.screenY - 207
-      };
-    }
+    //canvas.addEventListener("click", evt => {
+     // this.mousePos = getMousePos(canvas, evt);
+       // this.bullet = new Bullet(
+        // this.ctx,
+        // this.width,
+        // this.height,
+        // this.mousePos.x,
+        //this.mousePos.y
+      //);
+    };
+    //function getMousePos(canvas, evt) {
+     // return {
+      //  x: evt.screenX - 510,
+       // y: evt.screenY - 207
+      //};
+    //}
 
-    canvas.addEventListener("mousemove", function(evt) {
-      this.mousePos = getMousePos(canvas, evt);
+    //canvas.addEventListener("mousemove", function(evt) {
+      //this.mousePos = getMousePos(canvas, evt);
       //var message = "Mouse position: " + mousePos.x + ", "+mousePos.y;
       //console.log(message);
-    });
-  }
+    //});
+  //}
 
   init() {
     this.canvas.width = this.width;
@@ -50,6 +51,13 @@ class Game {
     this.background = new Background(this.ctx, this.width, this.height);
     this.element = new Element(this.ctx, this.width, this.height);
     this.tower = new Tower(this.ctx, this.width, this.height);
+    this.bullet = new Bullet(
+        this.ctx,
+        this.width,
+        this.height,
+        this.mousePos.x,
+        this.mousePos.y
+      );
     //this.board = new Board(this.ctx)
     //this.score = new Score(this.ctx)
 
@@ -64,12 +72,14 @@ class Game {
     this.background.draw();
     this.element.draw();
     this.tower.draw();
-    this.bullet.draw();
+    //this.bullet.draw();
     //this.board.boardDraw(this.board)
   }
 
   move() {
     this.element.move();
+    //this.bullet.move();
+    this.tower.move();
   }
 
   /*
