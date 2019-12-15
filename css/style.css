@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  background-color: black;
 }
 
 body button {
@@ -11,4 +12,8 @@ body button {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.canvas{
+  align-items: center;
 }

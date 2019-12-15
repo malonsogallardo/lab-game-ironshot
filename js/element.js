@@ -25,6 +25,8 @@ class Element{
         this.posX = 0;
         this.posY = 80;
 
+        this.live = 200;
+
     }
 
     draw(){
@@ -40,6 +42,13 @@ class Element{
         this.posX += this.vx;
 
         if (this.posX === 900) {
+            this.live--
+            if (this.live === 0 ){
+                alert("game over")
+                //gameOver()
+                console.log("game over")
+            }
+            console.log(this.live)
             this.posX = 0;
             this.randomImg = Math.floor(Math.random() * (this.img.length));
         }

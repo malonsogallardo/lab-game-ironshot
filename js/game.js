@@ -11,6 +11,8 @@ class Game {
     this.background = new Background(this.ctx, this.width, this.height);
     this.element = new Element(this.ctx, this.width, this.height);
     this.tower = new Tower(this.ctx, this.width, this.height, this.key);
+
+    
     //this.bullet = new Bullet(this.ctx);
 
   };
