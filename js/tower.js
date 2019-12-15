@@ -1,5 +1,5 @@
 class Tower{
-    constructor(ctx, width, heigth,keys){
+    constructor(ctx, width, heigth, gameWidth){
         this.ctx = ctx;
         this.width = 50;
         this.heigth = 50;
@@ -8,19 +8,22 @@ class Tower{
         this.posX = 0;
         this.posY = 500;
         this.switch = false;
+        this.gameWidth = gameWidth;
 
+
+        this.bullets = []
+        console.log(this.bullets)
         this.vx = 10;
 
-
-
-
-        this.keys = keys;
         //console.log(this.keys)
         this.setListeners()
     }
 
     draw(){
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
+        this.bullets.forEach(bullet => bullet.draw())
+        //this.clearBullets()
+        //this.bullets.forEach(bullet => bullet.draw())
     }
     move(){
         if(this.switch === false){
@@ -33,6 +36,7 @@ class Tower{
         } else if (this.posX === 10){
             this.switch = false;
         }
+        this.bullets.forEach(bullet => bullet.moveBullet())
         //if (this.posX === 890) {
           //  this.posX -= this.vx;
        // }
@@ -41,10 +45,20 @@ class Tower{
     setListeners() {
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 32) {
-                console.log("space")
+                //console.log("space")
+                this.shoot()
             }
-        });
+        }.bind(this));
     }
+    shoot(){
+        //console.log("shoooot")
+        this.bullets.push(new Bullet(this.ctx, this.posX, this.posY,this.width, this.heigth))
+        console.log(this.bullets)
+    }
+
+  //clearBullets() {
+    //this.bullets = this.bullets.filter(bullet => bullet.posX <= this.gameWidth)
+  //}
 
 
 }

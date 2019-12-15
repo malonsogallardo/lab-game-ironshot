@@ -11,11 +11,8 @@ class Game {
     this.background = new Background(this.ctx, this.width, this.height);
     this.element = new Element(this.ctx, this.width, this.height);
     this.tower = new Tower(this.ctx, this.width, this.height, this.key);
-    this.bullet = new Bullet(this.ctx);
+    //this.bullet = new Bullet(this.ctx);
 
-
-    this.TOP_KEY = 38,
-    this.SPACE = 32
   };
     
   init() {
@@ -39,14 +36,14 @@ class Game {
   draw() {
     this.background.draw();
     this.element.draw();
-    this.bullet.draw();
+    //this.bullet.draw();
     this.tower.draw();
     //this.board.boardDraw(this.board)
   }
 
   move() {
     this.element.move();
-    this.bullet.moveBullet();
+    //this.bullet.moveBullet();
     this.tower.move();
   }
 
