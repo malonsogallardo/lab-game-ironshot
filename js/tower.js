@@ -1,15 +1,22 @@
 class Tower{
-    constructor(ctx, width, heigth){
+    constructor(ctx, width, heigth,keys){
         this.ctx = ctx;
         this.width = 50;
         this.heigth = 50;
         this.image = new Image();
         this.image.src = "images/ironhack_logo.png";
         this.posX = 0;
-        this.posY = 420;
+        this.posY = 500;
         this.switch = false;
 
         this.vx = 10;
+
+
+
+
+        this.keys = keys;
+        //console.log(this.keys)
+        this.setListeners()
     }
 
     draw(){
@@ -30,5 +37,14 @@ class Tower{
           //  this.posX -= this.vx;
        // }
     }
+
+    setListeners() {
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 32) {
+                console.log("space")
+            }
+        });
+    }
+
 
 }

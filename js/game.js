@@ -10,8 +10,12 @@ class Game {
 
     this.background = new Background(this.ctx, this.width, this.height);
     this.element = new Element(this.ctx, this.width, this.height);
-    this.tower = new Tower(this.ctx, this.width, this.height);
+    this.tower = new Tower(this.ctx, this.width, this.height, this.key);
     this.bullet = new Bullet(this.ctx);
+
+
+    this.TOP_KEY = 38,
+    this.SPACE = 32
   };
     
   init() {

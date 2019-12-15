@@ -23,7 +23,7 @@ class Element{
         
         
         this.posX = 0;
-        this.posY = 250;
+        this.posY = 80;
 
     }
 
