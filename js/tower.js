@@ -20,10 +20,11 @@ class Tower{
     }
 
     draw(){
+        
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
         this.bullets.forEach(bullet => bullet.draw())
-        //this.clearBullets()
-        //this.bullets.forEach(bullet => bullet.draw())
+        this.clearBullets()
+        
     }
     move(){
         if(this.switch === false){
@@ -53,12 +54,11 @@ class Tower{
     shoot(){
         //console.log("shoooot")
         this.bullets.push(new Bullet(this.ctx, this.posX, this.posY,this.width, this.heigth))
-        console.log(this.bullets)
     }
 
-  //clearBullets() {
-    //this.bullets = this.bullets.filter(bullet => bullet.posX <= this.gameWidth)
-  //}
+  clearBullets() {
+    this.bullets = this.bullets.filter(bullet => bullet.posY >= 0 - bullet.heigth )
+  }
 
 
 }
