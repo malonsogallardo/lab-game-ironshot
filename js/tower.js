@@ -12,7 +12,7 @@ class Tower{
 
 
         this.bullets = []
-        console.log(this.bullets)
+        //console.log(this.bullets)
         this.vx = 10;
 
         //console.log(this.keys)

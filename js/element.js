@@ -25,7 +25,6 @@ class Element{
         this.posX = 0;
         this.posY = 80;
 
-        this.live = 200;
 
     }
 

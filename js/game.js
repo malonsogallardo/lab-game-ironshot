@@ -7,8 +7,9 @@ class Game {
     this.fps = 60;
     this.framesCounter = 0;
 
-    this.live = 200
-    console.log("hola", this.live)
+    this.live = 5;
+    this.countElement = 17;
+    //console.log("hola", this.live)
     
     this.mousePos = {};
 
@@ -16,7 +17,7 @@ class Game {
     //this.element = new Element(this.ctx, this.width, this.heigth);
     this.tower = new Tower(this.ctx, this.width, this.heigth, this.key);
     this.elements = []
-    console.log(this.elements)
+    //console.log(this.elements)
     
     //this.bullet = new Bullet(this.ctx);
 
@@ -36,10 +37,15 @@ class Game {
       this.move();
       this.clearObstacle()
       this.countLives();
-      if(this.framesCounter % 50 === 0) this.generateObstacle()
+      if(this.framesCounter % 60 === 0) this.generateObstacle()
       //if(this.framesCounter % 70 === 0) this.live--;
       //console.log(this.live)
+      // if(this.live === 0){
+      //   this.gameOver()
+      // }
       if(this.framesCounter > 1000) this.framesCounter = 0;
+
+      
     
      // if(this.isCollision()) this.gameOver();
     }, 1000 / this.fps);
@@ -64,8 +70,9 @@ class Game {
     //this.bullet.moveBullet();
     this.tower.move();
   }
-/*
+
   gameOver(){
+
     clearInterval(this.interval)
   }
 
@@ -73,11 +80,26 @@ class Game {
   isCollision(){
     return this.bullet.some(obs => (this.element.posX + this.element.width > obs.posX && obs.posX + obs.width > this.element.posX && this.element.posY + this.element.heigth > obs.posY && obs.posY + obs.heigth > this.element.posY ))
   }
-*/
+
   
     generateObstacle(){
-      this.elements.push(new Element(this.ctx, this.width, this.heigth, this.live))
+      if(this.countElement > 0){
+        this.elements.push(new Element(this.ctx, this.width, this.heigth, this.live))
+        this.countElement--
+        //console.log(this.countElement)
+      } else {
+        //console.log(this.elements[this.elements.length-1].posX)
+       if(this.elements[this.elements.length-1].posX >= 900) {
+         this.gameOver()
+        }
+      }
+      
+      
+
     }
+
+
+
 /*
     clear(){
         this.ctx.clearRect(0, 0, this.width, this.heigth)
@@ -85,21 +107,27 @@ class Game {
 */
 
     clearObstacle(){
-        this.elements = this.elements.filter(element => (element.posX <= 900))
+        this.elements = this.elements.filter(element => (element.posX <= 1000))
     }
 
 
   countLives() {
-    console.log("enter")
-
+   // console.log("enter")
+    //console.log(this.element.posX)
     if (this.elements.some( element => {
-      console.log("estas en el if")
-      console.log(element.posX)
-      element.posX >= 500
+      
+      //console.log(element.posX)
+     return element.posX >= 1000
 
     })) {
-      this.live --;
       console.log(this.live)
+      this.live--;
+     //console.log(this.live)
+    }
+
+
+    if(this.live === -1){
+      this.gameOver()
     }
     //console.log("enter")
   }

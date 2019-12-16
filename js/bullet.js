@@ -22,7 +22,7 @@ class Bullet{
     }
     moveBullet(){
         this.posY -= this.vy;
-        console.log(this.posY)
+        //console.log(this.posY)
 
 
         //if(this.posY === 0){ 
