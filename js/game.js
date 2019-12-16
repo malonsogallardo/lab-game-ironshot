@@ -8,7 +8,7 @@ class Game {
     this.framesCounter = 0;
 
     this.live = 5;
-    this.countElement = 17;
+    this.countElement = 15;
     //console.log("hola", this.live)
     
     this.mousePos = {};
@@ -37,17 +37,22 @@ class Game {
       this.move();
       this.clearObstacle()
       this.countLives();
+
+      //console.log(this.tower.bullets)
       if(this.framesCounter % 60 === 0) this.generateObstacle()
       //if(this.framesCounter % 70 === 0) this.live--;
       //console.log(this.live)
       // if(this.live === 0){
       //   this.gameOver()
       // }
+     
+      this.isCollision()
+     
       if(this.framesCounter > 1000) this.framesCounter = 0;
 
       
     
-     // if(this.isCollision()) this.gameOver();
+     
     }, 1000 / this.fps);
 
   }
@@ -78,8 +83,26 @@ class Game {
 
 
   isCollision(){
-    return this.bullet.some(obs => (this.element.posX + this.element.width > obs.posX && obs.posX + obs.width > this.element.posX && this.element.posY + this.element.heigth > obs.posY && obs.posY + obs.heigth > this.element.posY ))
+    let colision = this.elements.map(function(element){
+      return this.tower.bullets.filter(function(bullet){
+         return (bullet.posX + bullet.width > element.posX &&
+          element.posX + element.width > bullet.posX && 
+          bullet.posY + bullet.heigth > element.posY &&
+          element.posY + element.heigth > bullet.posY)
+
+      })
+    }.bind(this))
+
+    colision.forEach(function(col, index){
+      if(col.length) console.log(col) //col.died = true;
+    })
+      
+
+
+
+    //return this.bullet.some(obs => (this.element.posX + this.element.width > obs.posX && obs.posX + obs.width > this.element.posX && this.element.posY + this.element.heigth > obs.posY && obs.posY + obs.heigth > this.element.posY ))
   }
+
 
   
     generateObstacle(){
@@ -98,13 +121,6 @@ class Game {
 
     }
 
-
-
-/*
-    clear(){
-        this.ctx.clearRect(0, 0, this.width, this.heigth)
-    }
-*/
 
     clearObstacle(){
         this.elements = this.elements.filter(element => (element.posX <= 1000))

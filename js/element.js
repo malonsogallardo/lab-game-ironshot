@@ -21,6 +21,7 @@ class Element{
 
         this.randomImg = Math.floor(Math.random() * (this.img.length));
         
+        this.died = false;
         
         this.posX = 0;
         this.posY = 80;
@@ -29,7 +30,7 @@ class Element{
     }
 
     draw(){
-        this.ctx.drawImage(this.img[this.randomImg], this.posX, this.posY, this.width, this.heigth);
+        if(this.died === false) this.ctx.drawImage(this.img[this.randomImg], this.posX, this.posY, this.width, this.heigth);
         
 
         //this.ctx.drawImage(this.image2, 20, 20, this.width, this.heigth);
