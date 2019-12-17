@@ -2,24 +2,21 @@ class Game {
   constructor() {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.width = 900;
-    this.heigth = 600;
+    this.width = 1900;
+    this.heigth = 825;
     this.fps = 60;
     this.framesCounter = 0;
 
-    this.live = 5;
-    this.countElement = 15;
-    //console.log("hola", this.live)
+    this.live = 15;
+    this.punt = 0;
+    this.countElement = 25;
+    this.died = false;
     
-    this.mousePos = {};
-
     this.background = new Background(this.ctx, this.width, this.heigth);
-    //this.element = new Element(this.ctx, this.width, this.heigth);
     this.tower = new Tower(this.ctx, this.width, this.heigth, this.key);
     this.elements = []
-    //console.log(this.elements)
-    
-    //this.bullet = new Bullet(this.ctx);
+    this.score = new Score(this.ctx, this.score, this.live)
+
 
   };
     
@@ -35,24 +32,16 @@ class Game {
       this.clear();
       this.draw();
       this.move();
-      this.clearObstacle()
+
+      this.clearElements();      
+      this.isCollision()
+      this.checkLive()
       this.countLives();
 
-      //console.log(this.tower.bullets)
-      if(this.framesCounter % 60 === 0) this.generateObstacle()
-      //if(this.framesCounter % 70 === 0) this.live--;
-      //console.log(this.live)
-      // if(this.live === 0){
-      //   this.gameOver()
-      // }
-     
-      this.isCollision()
-     
+      if(this.framesCounter % 60 === 0) this.generateElements()
+      
       if(this.framesCounter > 1000) this.framesCounter = 0;
 
-      
-    
-     
     }, 1000 / this.fps);
 
   }
@@ -63,88 +52,78 @@ class Game {
 
   draw() {
     this.background.draw();
-    this.tower.draw();
-    //this.element.draw();
-    //this.bullet.draw();
+    this.score.draw(this.punt);
+    this.score.drawLive(this.live);
     this.elements.forEach(element => element.draw())
-    //this.board.boardDraw(this.board)
+    this.tower.draw();
+
   }
 
   move() {
     this.elements.forEach(element => element.move())
-    //this.bullet.moveBullet();
     this.tower.move();
   }
 
-  gameOver(){
+  generateElements() {
+    if(this.countElement > -1){
+      let images = ["images/css_logo.png","images/html_logo.png",  "images/blackhtml_logo.png",  "images/js_logo.png"];
+      this.elements.push(new Element(this.ctx, this.width, this.height, images[Math.floor(Math.random()*images.length)]))
+      this.countElement--
 
+    } else {
+
+     if(this.elements[this.elements.length-1].posX >= 1620) {}
+
+  }
+}
+
+  clearElements() {
+    this.elements = this.elements.filter(element => element.posX <= 1620)
+  }
+
+  gameOver(){
+    alert("perdedoooor")
+    location.reload()
     clearInterval(this.interval)
   }
 
-
-  isCollision(){
-    let colision = this.elements.map(function(element){
-      return this.tower.bullets.filter(function(bullet){
-         return (bullet.posX + bullet.width > element.posX &&
-          element.posX + element.width > bullet.posX && 
-          bullet.posY + bullet.heigth > element.posY &&
-          element.posY + element.heigth > bullet.posY)
-
-      })
-    }.bind(this))
-
-    colision.forEach(function(col, index){
-      if(col.length) console.log(col) //col.died = true;
-    })
-      
-
-
-
-    //return this.bullet.some(obs => (this.element.posX + this.element.width > obs.posX && obs.posX + obs.width > this.element.posX && this.element.posY + this.element.heigth > obs.posY && obs.posY + obs.heigth > this.element.posY ))
+  win(){
+    alert("ganadol")
+    location.reload()
+    clearInterval(this.interval)
   }
+  isCollision() {
+    for(let i = 0; i < this.elements.length; i++) {
+      let element = this.elements[i];
+      for(let j = 0; j < this.tower.bullets.length; j++) {
+        let bullet = this.tower.bullets[j]
+        if(element.posX + element.width > bullet.posX && bullet.posX + bullet.width > element.posX && element.posY + element.heigth > bullet.posY && bullet.posY + bullet.heigth > element.posY) {
+          this.elements.splice(this.elements.indexOf(element), 1)
+          this.tower.bullets.splice(this.tower.bullets.indexOf(bullet), 1)
+          this.punt++
 
-
-  
-    generateObstacle(){
-      if(this.countElement > 0){
-        this.elements.push(new Element(this.ctx, this.width, this.heigth, this.live))
-        this.countElement--
-        //console.log(this.countElement)
-      } else {
-        //console.log(this.elements[this.elements.length-1].posX)
-       if(this.elements[this.elements.length-1].posX >= 900) {
-         this.gameOver()
         }
       }
-      
-      
-
     }
+  }
 
-
-    clearObstacle(){
-        this.elements = this.elements.filter(element => (element.posX <= 1000))
-    }
-
+  checkLive(){
+    if(this.countElement === -1 && this.died === false){this.win()}
+  }
+  
 
   countLives() {
-   // console.log("enter")
-    //console.log(this.element.posX)
     if (this.elements.some( element => {
-      
-      //console.log(element.posX)
-     return element.posX >= 1000
+     return element.posX >= 1620
 
     })) {
-      console.log(this.live)
       this.live--;
-     //console.log(this.live)
+      console.log(this.live)
     }
 
 
     if(this.live === -1){
       this.gameOver()
     }
-    //console.log("enter")
   }
 }

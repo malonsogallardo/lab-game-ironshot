@@ -5,17 +5,14 @@ class Tower{
         this.heigth = 50;
         this.image = new Image();
         this.image.src = "images/ironhack_logo.png";
-        this.posX = 0;
-        this.posY = 500;
+        this.posX = 250;
+        this.posY = 720;
         this.switch = false;
         this.gameWidth = gameWidth;
 
-
         this.bullets = []
-        //console.log(this.bullets)
-        this.vx = 10;
+        this.vx = 9;
 
-        //console.log(this.keys)
         this.setListeners()
     }
 
@@ -32,32 +29,30 @@ class Tower{
         } else{
             this.posX -= this.vx;
         }
-        if(this.posX === 850){
+        if(this.posX === 1600){
             this.switch = true;
-        } else if (this.posX === 10){
+        } else if (this.posX === 250){
             this.switch = false;
         }
         this.bullets.forEach(bullet => bullet.moveBullet())
-        //if (this.posX === 890) {
-          //  this.posX -= this.vx;
-       // }
+
     }
 
     setListeners() {
-        document.addEventListener("keydown", function (e) {
+        document.addEventListener("keyup", function (e) {
             if (e.keyCode === 32) {
-                //console.log("space")
+
                 this.shoot()
             }
         }.bind(this));
     }
     shoot(){
-        //console.log("shoooot")
+
         this.bullets.push(new Bullet(this.ctx, this.posX, this.posY,this.width, this.heigth))
     }
 
   clearBullets() {
-    this.bullets = this.bullets.filter(bullet => bullet.posY >= 0 - bullet.heigth )
+    this.bullets = this.bullets.filter(bullet => bullet.posY >= 140 - bullet.heigth )
   }
 
 
