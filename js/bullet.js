@@ -1,8 +1,8 @@
 class Bullet{
-    constructor(ctx, towerX, towerY, towerWidth, towerHeight) {
+    constructor(ctx, towerX, towerY, towerWidth, towerHeigth) {
         this.ctx = ctx;
         this.posX = towerX + towerWidth / 10;
-        this.posY = towerY - towerHeight / 2;
+        this.posY = towerY - towerHeigth / 2;
         this.heigth = 35;
         this.width = 20;
         this.move = 0;
@@ -22,9 +22,10 @@ class Bullet{
     }
     moveBullet(){
         this.posY -= this.vy;
+        //console.log(this.posY)
 
 
-        //if(this.posY === 0){
+        //if(this.posY === 0){ 
             
             //console.log(this.posY)
             //this.posY = 450
@@ -34,7 +35,7 @@ class Bullet{
         //this.posY -= this.vy;
     
         //Accelerate > 1 &&  Decelerate < 1
-        //if(this.posY >= this.floor + this.playerHeight) this.vy *= -1
+        //if(this.posY >= this.floor + this.playerHeigth) this.vy *= -1
       } 
 }
 
