@@ -13,6 +13,9 @@ class Tower{
         this.bullets = []
         this.vx = 9;
 
+        this.sound = new Audio();
+        this.sound.src = "sound/bullet.mp3"
+
         this.setListeners()
     }
 
@@ -41,13 +44,14 @@ class Tower{
     setListeners() {
         document.addEventListener("keyup", function (e) {
             if (e.keyCode === 32) {
-
                 this.shoot()
             }
         }.bind(this));
     }
     shoot(){
 
+        this.sound.play()
+        this.sound.currentTime = 0
         this.bullets.push(new Bullet(this.ctx, this.posX, this.posY,this.width, this.heigth))
     }
 
