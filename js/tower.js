@@ -1,5 +1,5 @@
 class Tower{
-    constructor(ctx, width, heigth, gameWidth){
+    constructor(ctx, gameWidth){
         this.ctx = ctx;
         this.width = 50;
         this.heigth = 50;
@@ -7,11 +7,11 @@ class Tower{
         this.image.src = "images/ironhack_logo.png";
         this.posX = 250;
         this.posY = 720;
-        this.switch = false;
+        this.direction = 1;
         this.gameWidth = gameWidth;
-
+        
         this.bullets = []
-        this.vx = 9;
+        this.vx = 10;
 
         this.sound = new Audio();
         this.sound.src = "sound/bullet.mp3"
@@ -23,29 +23,30 @@ class Tower{
         
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
         this.bullets.forEach(bullet => bullet.draw())
-        this.clearBullets()
-        
+        this.clearBullets()       
     }
     move(){
-        if(this.switch === false){
-            this.posX += this.vx;
-        } else{
-            this.posX -= this.vx;
+        this.posX += this.direction * this.vx;
+        if(this.posX >= this.gameWidth - 280){
+            this.direction = -1;
+        } else if (this.posX <= this.gameWidth - 1650){
+            this.direction = 1;
         }
-        if(this.posX === 1600){
-            this.switch = true;
-        } else if (this.posX === 250){
-            this.switch = false;
-        }
-        this.bullets.forEach(bullet => bullet.moveBullet())
 
+        this.bullets.forEach(bullet => bullet.moveBullet())
     }
+
 
     setListeners() {
         document.addEventListener("keyup", function (e) {
             if (e.keyCode === 32) {
+                
                 this.shoot()
             }
+            if (e.keyCode === 40) {
+                this.direction = this.direction * -1
+            }
+
         }.bind(this));
     }
     shoot(){

@@ -6,7 +6,7 @@ class Bullet{
         this.heigth = 35;
         this.width = 20;
         this.move = 0;
-        this.vy = 12;
+        this.vy = 17;
 
         this.image = new Image();
         this.image.src = "images/bullet.png";
@@ -19,5 +19,3 @@ class Bullet{
         this.posY -= this.vy;
       } 
 }
-
-

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!-- JS -->
 
@@ -15,9 +17,11 @@
     <script type="text/javascript" src="js/element.js"></script>
     <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+
     <audio id= "soundyouwin" src="./sound/youwin.mp3"></audio>
     <audio id= "soundbullet" src="./sound/bullet.mp3"></audio>
     <audio id= "soundgameover" src="./sound/gameover.mp3"></audio>
+    <audio id= "soundon" src="./sound/sound.mp3"></audio>
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -26,9 +30,33 @@
 </head>
 
 <body>
+    <div>
+        <h1>IRONSHOOT</h1>
+        <h2>INSTRUCCIONES:</h2>
+        <ul>
+            <li>HAY 30 OBJETIVOS QUE DEBES DESTRUIR ANTES DE QUE DESAPAREZCAN.</li>
+            <li>TIENES 25 VIDAS</li>
+            <li>POR CADA OBJETIVO QUE NO CONSIGAS DESTRUIR PERDERAS UNA VIDA</li>
+            <li>PARA DESTRUIR LOS ELEMENTOS TENDRAS QUE UTILIZAR A BULLET BILL</li>
+            <li>PUEDES CAMBIAR DE DIRECCION PARA AYUDARTE A ALCANZAR LOS OBJETIVOS</li>
+            <li>LOGRARAS GANAR SI TIENES VIDAS SUFICIENTES UNA VEZ ACABEN DE APARECER LOS OBJETIVOS</li>
+        </ul>
+        <h2>CONTROLES:</h2>
+        <ul>
+            <li>SPACE: LANZA A BULLET BILL</li>
+            <li>DOWN: CAMBIA DE DIRECCION</li>
+        </ul>
+        <h2>OJO!</h2>
+        <h3>EL COMPORTAMIENTO DE LOS OBJETIVOS VARIAN DURANTE EL JUEGO:</h3>
+        <ul>
+            <li>LA VELOCIDAD POR LA QUE SE MUESTRAN EN PANTALLA ES ALEATORIA</li>
+            <li>PUEDEN APARECER DE DIFERENTES LADOS Y ALTURA DE LA PANTALLA</li>
+            <li>LA VELOCIDAD DE LOS OBJETIVOS VA INCREMENTANDO CADA VEZ QUE DESTRUYAS UNO</li>
+        </ul>
+    </div>
     <button id="start-button">StartGame</button>
     <div id="game-board">
-    <canvas id="canvas"></canvas>
+        <canvas id="canvas"></canvas>
     </div>
 </body>
 

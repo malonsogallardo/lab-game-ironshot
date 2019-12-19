@@ -1,24 +1,35 @@
 class Element{ 
-    constructor(ctx, width, heigth, image, live){
+    constructor(ctx, difficulty, image){
         this.ctx = ctx;
-        this.width = 40;
-        this.heigth = 40;
-        this.vx = 5;
+        this.difficulty = difficulty;
+
+        this.widthimg = 40;
+        this.heigthimg = 40;
+        
+        this.vx = (Math.floor(Math.random() * (10 - 5)) + 5) * this.difficulty;
 
         this.image = new Image();
         this.image.src = image;
         
-        this.posX = 250;
-        this.posY = 130;
+        
+        this.posY = (Math.floor(Math.random() * (250 - 130)) + 130);
 
+        this.direction = Math.round(Math.random()) * 2 - 1 
+        console.log(this.direction)
+        if (this.direction === 1){
+            this.posX = 250;
+        }else{
+            this.posX = 1620;
+        }
+        
     }
 
     draw(){
-        this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
+        this.ctx.drawImage(this.image, this.posX, this.posY, this.widthimg, this.heigthimg);
     }
-
+   
     move(){
-        this.posX += this.vx;
+        this.posX += this.vx * this.direction;
     }
 
 }
