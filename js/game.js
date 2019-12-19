@@ -7,58 +7,61 @@ class Game {
     this.fps = 60;
     this.framesCounter = 0;
 
-    this.live = 10;
+    this.widthImg = 500;
+    this.heigthImg = 500;
+    this.posXimg = 500;
+    this.posYimg = 100;
+
+    this.live = 30;
     this.punt = 0;
-    this.countElement = 25;
+    this.fire = 45;
+    this.difficulty = 0.8
     this.died = false;
     
-    this.background = new Background(this.ctx, this.width, this.heigth);
-    this.tower = new Tower(this.ctx, this.width, this.heigth, this.key);
     this.elements = []
-    this.score = new Score(this.ctx, this.score, this.live)
+    this.background = new Background(this.ctx, this.width, this.heigth);
+    this.tower = new Tower(this.ctx, this.width);
+    this.score = new Score(this.ctx, this.score, this.live, this.fire)
+    
+    this.imaGao = new Image();
+    this.imaGao.src = "images/gameover.png";
 
-    this.image1 = new Image();
-    this.image1.src = "images/gameover.png";
+    this.imaWin = new Image();
+    this.imaWin.src = "images/youwin.png";
 
-    this.image2 = new Image();
-    this.image2.src = "images/youwin.png";
+    this.soundEl = new Audio();
+    this.soundEl.src = "sound/element.mp3"
 
-    this.soundwin = new Audio("sound/youwin.mp3");
-    this.bulletshoot = new Audio("sound/bullet.mp3");
-    this.soundgameover = new Audio("sound/gameover.mp3");
+    this.soundLi = new Audio();
+    this.soundLi.src = "sound/live.wav"
 
   };
-    
+  
+  //inicio del juego
   init() {
     this.canvas.width = this.width;
     this.canvas.height = this.heigth;
+    document.getElementById("soundon").play()
     this.start();
   }
-
+  //renderiizado
   start() {
     this.interval = setInterval(() => {
-      this.framesCounter++;
-      this.clear();
-      this.draw();
-      this.move();
-
+    this.framesCounter++;
+    this.clear();
+    this.draw();
+    this.move(); 
       
-      this.isCollision();
-      this.clearElements();  
-      this.countLives();  
-      //this.checkLive(); 
-      //console.log(this.framesCounter)
-      if(this.framesCounter % 60 === 0) this.generateElements();
-      if(this.framesCounter > 1000) this.framesCounter = 0;
-      //console.log(this.elements.length)
-   
-
+    this.checkGame();
+    this.isCollision();
+    this.countLives();
+    this.clearElements();  
+      
+    if(this.framesCounter % 60 === 0) this.generateElements();
+    if(this.framesCounter > 1000) this.framesCounter = 0;
 
     }, 1000 / this.fps);
-
   }
-
-  
 
   clear() {
     this.ctx.clearRect(0, 0, this.width, this.heigth);
@@ -68,77 +71,77 @@ class Game {
     this.background.draw();
     this.score.draw(this.punt);
     this.score.drawLive(this.live);
+    this.score.drawFire(this.fire)
     this.elements.forEach(element => element.draw())
     this.tower.draw();
-
   }
 
   move() {
     this.elements.forEach(element => element.move())
     this.tower.move();
   }
-
+  
+  //generar elementos en el canvas
   generateElements() {
-    if(this.countElement > 0){
-      let images = ["images/css_logo.png","images/html_logo.png",  "images/blackhtml_logo.png",  "images/js_logo.png"];
-      this.elements.push(new Element(this.ctx, this.width, this.height, images[Math.floor(Math.random()*images.length)]))
-      this.countElement--
-
+    if(this.fire > 0){
+      let images = ["images/css_logo.png", "images/html_logo.png",  "images/blackhtml_logo.png",  "images/js_logo.png", "images/js_js.png","images/github1.png","images/html5_silver.png","images/github2.png"];
+      this.elements.push(new Element(this.ctx, this.difficulty, images[Math.floor(Math.random()*images.length)]))
+      this.fire--
     } 
-}
+  }
 
+  //funcion para limpiar los elementos que salen por los anchos del canvas
   clearElements() {
-    this.elements = this.elements.filter(element => element.posX <= 1620)
+    this.elements = this.elements.filter(element => element.posX < this.width - 280)
+    this.elements = this.elements.filter(element => element.posX > this.width - 1680)
   }
 
-  gameOver(){
-    //this.stop()
-    console.log("pierdes")
-    
-    setTimeout(function(){
-      clearInterval(this.interval)
-      this.ctx.drawImage(this.image1, 500, 100, 500,500)
-      document.getElementById("soundgameover").play()
-    }.bind(this),500);
-    
-
-  }
-
-  win(){
-    console.log("ganas")
-    setTimeout(function(){
-      clearInterval(this.interval)
-      this.ctx.drawImage(this.image2, 500, 100, 500,500)
-      document.getElementById("soundyouwin").play()
-    }.bind(this),500);
-
-  }
+  //colision
   isCollision() {
     for(let i = 0; i < this.elements.length; i++) {
       let element = this.elements[i];
       for(let j = 0; j < this.tower.bullets.length; j++) {
         let bullet = this.tower.bullets[j]
-        if(element.posX + element.width > bullet.posX && bullet.posX + bullet.width > element.posX && element.posY + element.heigth > bullet.posY && bullet.posY + bullet.heigth > element.posY) {
+        if(element.posX + element.widthimg > bullet.posX && bullet.posX + bullet.width > element.posX && element.posY + element.heigthimg > bullet.posY && bullet.posY + bullet.heigth > element.posY) {
           this.elements.splice(this.elements.indexOf(element), 1)
           this.tower.bullets.splice(this.tower.bullets.indexOf(bullet), 1)
-          console.log("hola")
+          this.soundEl.play()
+          this.sound.currentTime = 0
           this.punt++
-          if (this.punt === 15){this.win()}
-        }
+          if(this.punt % 2 ){this.difficulty = this.difficulty + 0.1}
+          }
       }
     }
   }
 
+  //contador de vidas por los dos lados
   countLives() {
-    if (this.elements.some( element => {
-     return element.posX >= 1620
-    })) {
+    if ((this.elements.some( element => {return element.posX >= this.width - 280})) || (this.elements.some( element => {return element.posX <= this.width - 1680}))) {
+      this.soundLi.play()
+      this.sound1.currentTime = 0
       this.live--;
-      if(this.live === 0){
-        this.gameOver()
-     }
-    
+      
+      if(this.live === 0){this.died = true}
     }
-
   }
+  
+  checkGame(){
+    if(this.died){
+      this.gameOver()
+    } else if(this.elements.length === 0 && this.fire === 0){this.win()} 
+  }
+
+  gameOver(){
+    clearInterval(this.interval)
+    this.ctx.drawImage(this.imaGao, this.posXimg, this.posYimg, this.widthImg,this.heigthImg)
+    document.getElementById("soundon").pause()
+    setTimeout(function(){document.getElementById("soundgameover").play()}, 300);  
+  } 
+
+  win(){
+    clearInterval(this.interval)
+    this.ctx.drawImage(this.imaWin, this.posXimg, this.posYimg, this.widthImg,this.heigthImg)
+    document.getElementById("soundon").pause()
+    setTimeout(function(){document.getElementById("soundyouwin").play()}, 300);    
+  };
 }
