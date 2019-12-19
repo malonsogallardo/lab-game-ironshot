@@ -14,7 +14,8 @@ class Bullet{
     draw(){
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
     }
-
+    
+//funcion para mover las balas
     moveBullet(){
         this.posY -= this.vy;
       } 

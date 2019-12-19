@@ -6,16 +6,16 @@ class Element{
         this.widthimg = 40;
         this.heigthimg = 40;
         
-        this.vx = (Math.floor(Math.random() * (10 - 5)) + 5) * this.difficulty;
+        this.vx = (Math.floor(Math.random() * (10 - 5)) + 5) * this.difficulty; // random para añadirle dificultad
 
         this.image = new Image();
         this.image.src = image;
         
         
-        this.posY = (Math.floor(Math.random() * (250 - 130)) + 130);
+        this.posY = (Math.floor(Math.random() * (250 - 130)) + 130); //random para que salga en una posicion Y aleatoria
 
-        this.direction = Math.round(Math.random()) * 2 - 1 
-        console.log(this.direction)
+        this.direction = Math.round(Math.random()) * 2 - 1 //random para que se dibujen en un lado del canvas u otro
+        //posicion de pintado    
         if (this.direction === 1){
             this.posX = 250;
         }else{
