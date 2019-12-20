@@ -6,7 +6,7 @@ class Element{
         this.widthimg = 40;
         this.heigthimg = 40;
         
-        this.vx = (Math.floor(Math.random() * (10 - 5)) + 5) * this.difficulty; // random para añadirle dificultad
+        this.vx = (Math.floor(Math.random() * (12 - 8)) + 8) * this.difficulty; // random para añadirle dificultad
 
         this.image = new Image();
         this.image.src = image;

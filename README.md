@@ -1,25 +1,24 @@
-# lab-game-ironshot
+# Game-ironshot
 
-Es un juego en el que su finalidad es conseguir mantenerse con vida gracias a la ayuda de bullet bill.
+This game is he first project of IronHack bootcamp Web Developmet.
 
-Se va complicando poco a poco
+in this project is used the the following tecnologic
 
-El comportamiento de los objetivos varian durante el juego:
-    La velocidad por la que se muestran en pantalla es aleatoria
-    Pueden aparecer de diferentes lados y altura de la pantalla
-    La velocidad de los objetivos va incrementando cada vez que destruyas uno
-
-
-Esta hecho de forma que aparencen objetivos de diferentes puntos de la imagen. Tenemos una "torre" de la que podemos disparar con la tecla "space"para eliminar los elementos y poder ganar o perder. Se generan con una velocidad random para que no sea tan secuencial y esta velocidad va incrementando a medida que los vamos impactando con las balas.
-La torre va rebotando en los lados de la imagen aunque podemos cambiar la direccion con la tecla "down"
-Cada vez que un objetivo sale de la imagen se borra y te resta una vida.
+* HTML
+* CSS
+* Canvas API
+* JavaScript
 
 
-Las funciones mas usadas en la manipulacion de Arrays son:
+## Description
 
-forEach => Para recorrer los arrays de objetivos y balas
-splice => Para ir eliminando los elementos en las colisiones al chocar
-some => Para cuando un elemento del array cumpla la condicion
-push  => Para añadir elementos a los arrays 
-indexOf => Para devolver el indice de las balas u objetivos
-filter => Para limpiar los elementos que salen del canvas
+This game consists of destroying the greatest number of objectives and staying alive thanks to the help of the iron-ship. This ship is capable of firing an infinite number of bullet-bill.
+
+Your mission is to survive, you have 30 lives. You must destroy 45 targets, You will lose a life for each objective you miss, so pay attention.
+
+### WATCH OUT!
+When you destroy the targets, their behavior changes
+
+## Author
+
+- Miguel Alonso Gallardo - [malonsogallardo](https://github.com/malonsogallardo)
