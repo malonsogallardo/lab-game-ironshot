@@ -26,7 +26,7 @@ class Tower{
         this.bullets.forEach(bullet => bullet.draw())
         this.clearBullets()       
     }
-
+    
     //funcion de movimiento de la torre
     move(){
         this.posX += this.direction * this.vx;
