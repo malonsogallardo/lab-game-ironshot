@@ -1,4 +1,4 @@
-# Game-ironshot
+# Game-ironshot :rocket: :space_invader:
 
 This game is he first project of IronHack bootcamp Web Developmet.
 
@@ -19,6 +19,10 @@ Your mission is to survive, you have 30 lives. You must destroy 45 targets, You 
 ### WATCH OUT!
 When you destroy the targets, their behavior changes
 
+**Good luck** :four_leaf_clover:
+
 ## Author
 
 - Miguel Alonso Gallardo - [malonsogallardo](https://github.com/malonsogallardo)
+
+
