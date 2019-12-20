@@ -1,0 +1,50 @@
+body {
+  text-align: center;
+  background-color: black;
+  color:white;
+  font-size: 23px;
+  font-family: "Georgia";}
+
+h1{
+  font-family: "Press Start 2P";
+  margin-top: 70px;
+  margin-bottom: 80px;
+}
+
+#reset-div {
+  position: relative;
+  height: 0px;
+  width: 191px;
+  left: 325px;
+  top: 10px;
+}
+
+#reset {
+  border:1px solid red;
+  font-size: 35px;
+  background-color: black;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0;
+  border-radius: 5px;
+}
+
+#start-button {
+  border:1px solid red;
+  font-size: 35px;
+  background-color: black;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-top: 80px;
+}
+
+.canvas{
+  align-items: center;
+}
+
+li{
+  list-style: none;
+  margin-bottom: 3px;
+}
