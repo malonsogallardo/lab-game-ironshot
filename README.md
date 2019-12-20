@@ -2,24 +2,24 @@
 
 Es un juego en el que su finalidad es conseguir mantenerse con vida gracias a la ayuda de bullet bill.
 
-INSTRUCCIONES:
-    HAY 45 OBJETIVOS QUE DEBES DESTRUIR ANTES DE QUE DESAPAREZCAN.
-    TIENES 30 VIDAS
-    POR CADA OBJETIVO QUE NO CONSIGAS DESTRUIR PERDERAS UNA VIDA
-    PARA DESTRUIR LOS ELEMENTOS TENDRAS QUE UTILIZAR A BULLET BILL
-    PUEDES CAMBIAR DE DIRECCION PARA AYUDARTE A ALCANZAR LOS OBJETIVOS
-    LOGRARAS GANAR SI TIENES VIDAS SUFICIENTES UNA VEZ ACABEN DE APARECER LOS OBJETIVOS
-
 Se va complicando poco a poco
 
-    EL COMPORTAMIENTO DE LOS OBJETIVOS VARIAN DURANTE EL JUEGO:
-    LA VELOCIDAD POR LA QUE SE MUESTRAN EN PANTALLA ES ALEATORIA
-    PUEDEN APARECER DE DIFERENTES LADOS Y ALTURA DE LA PANTALLA
-    LA VELOCIDAD DE LOS OBJETIVOS VA INCREMENTANDO CADA VEZ QUE DESTRUYAS UNO
+El comportamiento de los objetivos varian durante el juego:
+    La velocidad por la que se muestran en pantalla es aleatoria
+    Pueden aparecer de diferentes lados y altura de la pantalla
+    La velocidad de los objetivos va incrementando cada vez que destruyas uno
 
 
-Que he hecho:
+Esta hecho de forma que aparencen objetivos de diferentes puntos de la imagen. Tenemos una "torre" de la que podemos disparar con la tecla "space"para eliminar los elementos y poder ganar o perder. Se generan con una velocidad random para que no sea tan secuencial y esta velocidad va incrementando a medida que los vamos impactando con las balas.
+La torre va rebotando en los lados de la imagen aunque podemos cambiar la direccion con la tecla "down"
+Cada vez que un objetivo sale de la imagen se borra y te resta una vida.
 
-Como lo he hecho:
 
-Porque:
+Las funciones mas usadas en la manipulacion de Arrays son:
+
+forEach => Para recorrer los arrays de objetivos y balas
+splice => Para ir eliminando los elementos en las colisiones al chocar
+some => Para cuando un elemento del array cumpla la condicion
+push  => Para añadir elementos a los arrays 
+indexOf => Para devolver el indice de las balas u objetivos
+filter => Para limpiar los elementos que salen del canvas

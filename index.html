@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <!-- JS -->
+        <script type="text/javascript" src="js/background.js"></script>
+        <script type="text/javascript" src="js/bullet.js"></script>
+        <script type="text/javascript" src="js/score.js"></script>
+        <script type="text/javascript" src="js/tower.js"></script>
+        <script type="text/javascript" src="js/element.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
 
-    <script type="text/javascript" src="js/background.js"></script>
-    <script type="text/javascript" src="js/bullet.js"></script>
-    <script type="text/javascript" src="js/score.js"></script>
-    <script type="text/javascript" src="js/tower.js"></script>
-    <script type="text/javascript" src="js/element.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-
-    <audio id= "soundyouwin" src="./sound/youwin.mp3"></audio>
-    <audio id= "soundbullet" src="./sound/bullet.mp3"></audio>
-    <audio id= "soundgameover" src="./sound/gameover.mp3"></audio>
-    <audio id= "soundon" src="./sound/sound.mp3"></audio>
+        <audio id= "soundyouwin" src="./sound/youwin.mp3"></audio>
+        <audio id= "soundbullet" src="./sound/bullet.mp3"></audio>
+        <audio id= "soundgameover" src="./sound/gameover.mp3"></audio>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
 
-    <title>IronShot</title>
-</head>
+        <title>IronShoot</title>
+    </head>
 
-<body>
-    <button id="start-button">StartGame</button>
-    <div id="game-board">
-        <canvas id="canvas"></canvas>
-    </div>
-</body>
+    <body>
+        <div id="text">
+            <h1>IRONSHOOT</h1>
+            <h2>INSTRUCCIONES:</h2>
+            <ul>
+                <li>Hay 45 objetivos que debes destruir antes de que desaparezcan.</li>
+                <li>Tienes 30 vidas.</li>
+                <li>Por cada objetivo que no consigas destruir perderas una vida.</li>
+                <li>Para destruir los elementos tendras que utilizar a bullet bill.</li>
+                <li>Puedes cambiar de direccion para ayudarte a alcanzar los objetivos.</li>
+                <li>Lograras ganar si tienes vidas suficientes una vez acaben de aparecer los objetivos.</li>
+            </ul>    
+            <h3>CONTROLES:</h3>
+            <ul>
+                <li>SPACE: Dispara a Bullet Bill.</li>
+                <li>DOWN: Cambio de sentido.</li>
+            </ul>    
+        </div>
 
+        <button id="start-button">StartGame</button>
+        <div id="reset-div"></div>
+        <div id="game-board">
+            <canvas id="canvas"></canvas>
+        </div>
+    </body>
 </html>

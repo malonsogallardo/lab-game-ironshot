@@ -11,6 +11,7 @@ class Bullet{
         this.image = new Image();
         this.image.src = "images/bullet.png";
     }
+//funcion para pintar balas
     draw(){
         this.ctx.drawImage(this.image, this.posX, this.posY, this.width, this.heigth);
     }
