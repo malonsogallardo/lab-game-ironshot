@@ -2,7 +2,7 @@
 
 This game is he first project of IronHack bootcamp Web Developmet.
 
-in this project is used the the following tecnologic
+This project uses the following technology
 
 * HTML
 * CSS
