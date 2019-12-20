@@ -30,7 +30,7 @@ class Tower{
     //funcion de movimiento de la torre
     move(){
         this.posX += this.direction * this.vx;
-        if(this.posX >= this.gameWidth - 280){
+        if(this.posX >= this.gameWidth - 300){
             this.direction = -1;
         } else if (this.posX <= this.gameWidth - 1650){
             this.direction = 1;
@@ -61,8 +61,7 @@ class Tower{
 
     //funcion para limpiar las balas que salen por Y
     clearBullets() {
-        this.bullets = this.bullets.filter(bullet => bullet.posY >= 140 - bullet.heigth )
+        this.bullets = this.bullets.filter(bullet => bullet.posY >= 145 - bullet.heigth )
     }
-
 
 }

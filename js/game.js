@@ -15,7 +15,7 @@ class Game {
     this.live = 30;
     this.punt = 0;
     this.fire = 45;
-    this.difficulty = 0.8
+    this.difficulty = 0.9
     this.died = false;
     
     this.elements = []
@@ -29,6 +29,9 @@ class Game {
     this.imaWin = new Image();
     this.imaWin.src = "images/youwin.png";
 
+    this.soundInit = new Audio();
+    this.soundInit.src = "sound/sound.mp3"
+
     this.soundEl = new Audio();
     this.soundEl.src = "sound/element.mp3"
 
@@ -41,10 +44,12 @@ class Game {
   init() {
     this.canvas.width = this.width;
     this.canvas.height = this.heigth;
-    document.getElementById("soundon").play()
+    this.soundInit.play()
+    this.soundInit.currentTime = 0
+    
     this.start();
   }
-  //renderiizado
+  //renderizado
   start() {
     this.interval = setInterval(() => {
     this.framesCounter++;
@@ -106,7 +111,7 @@ class Game {
           this.elements.splice(this.elements.indexOf(element), 1)
           this.tower.bullets.splice(this.tower.bullets.indexOf(bullet), 1)
           this.soundEl.play()
-          this.sound.currentTime = 0
+          this.soundEl.currentTime = 0
           this.punt++
           if(this.punt % 2 ){this.difficulty = this.difficulty + 0.1}
           }
@@ -118,7 +123,7 @@ class Game {
   countLives() {
     if ((this.elements.some( element => {return element.posX >= this.width - 280})) || (this.elements.some( element => {return element.posX <= this.width - 1680}))) {
       this.soundLi.play()
-      this.sound1.currentTime = 0
+      this.soundLi.currentTime = 0
       this.live--;
       
       if(this.live === 0){this.died = true}
@@ -127,21 +132,25 @@ class Game {
   
   checkGame(){
     if(this.died){
-      this.gameOver()
-    } else if(this.elements.length === 0 && this.fire === 0){this.win()} 
+      this.gameOver();
+      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton
+    } else if(this.elements.length === 0 && this.fire === 0){
+      this.win()
+      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton
+    }
   }
 
   gameOver(){
     clearInterval(this.interval)
     this.ctx.drawImage(this.imaGao, this.posXimg, this.posYimg, this.widthImg,this.heigthImg)
-    document.getElementById("soundon").pause()
+    this.soundInit.pause()
     setTimeout(function(){document.getElementById("soundgameover").play()}, 300);  
   } 
 
   win(){
     clearInterval(this.interval)
     this.ctx.drawImage(this.imaWin, this.posXimg, this.posYimg, this.widthImg,this.heigthImg)
-    document.getElementById("soundon").pause()
+    this.soundInit.pause()
     setTimeout(function(){document.getElementById("soundyouwin").play()}, 300);    
   };
 }
