@@ -37,7 +37,6 @@ class Game {
 
     this.soundLi = new Audio();
     this.soundLi.src = "sound/live.wav"
-
   };
   
   //inicio del juego
@@ -133,10 +132,10 @@ class Game {
   checkGame(){
     if(this.died){
       this.gameOver();
-      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton
+      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton reset
     } else if(this.elements.length === 0 && this.fire === 0){
       this.win()
-      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton
+      document.getElementById("reset-div").innerHTML = '<button id="reset">Try Again</button>'; //genera el boton reset
     }
   }
 
