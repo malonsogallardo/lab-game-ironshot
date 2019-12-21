@@ -1,4 +1,6 @@
-# Game-ironshot :rocket: :space_invader: (https://malonsogallardo.github.io/lab-game-ironshot/)
+# Game-ironshot :rocket: :space_invader: 
+
+(https://malonsogallardo.github.io/lab-game-ironshot/)
 
 This game is he first project of IronHack bootcamp Web Developmet.
 
